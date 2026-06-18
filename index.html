@@ -193,6 +193,8 @@
   .btn-close-challenge:hover{background:var(--ruby-mid)}
 
   .loading{text-align:center;padding:2rem;color:var(--text-muted);font-size:14px}
+  .btn-abandon{padding:6px 12px;background:var(--ruby);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;margin-left:auto}
+  .btn-abandon:hover{background:var(--ruby-mid)}
 
   @media(max-width:500px){.pgrid{grid-template-columns:1fr}body{padding:.75rem}}
 </style>
@@ -202,7 +204,7 @@
   <div class="top-bar">
     <h1><span class="suit">♦</span> May I</h1>
     <div class="top-bar-right">
-      <small>Card game scorer</small>
+      <small>Card game scorer · v1.1</small>
       <span class="sync-status syncing" id="sync-status">Connecting...</span>
     </div>
   </div>
@@ -482,8 +484,13 @@ function rg(){
   h+=`<div class="ghead"><h2>${fd(S.date)||'Current game'}</h2><span>${S.players.length} players</span></div>`;
 
   // Game code bar
-  if(S.gameCode){
-    h+=`<div class="game-code-bar"><span class="gc-label">Game code</span><span class="gc-code">${S.gameCode}</span><span class="gc-hint">Share with other devices to follow live</span></div>`;
+  if(S.gameCode&&isHost){
+    h+=`<div class="game-code-bar">
+      <div><span class="gc-label">Game code</span><span class="gc-code" style="display:block">${S.gameCode}</span><span class="gc-hint">Share this code so others can follow live</span></div>
+      <button onclick="abandonGame()" class="btn-abandon">Abandon game</button>
+    </div>`;
+  } else if(S.gameCode&&!isHost){
+    h+=`<div class="game-code-bar"><span class="gc-label">Viewing live</span><span class="gc-hint" style="flex:1">Following game <strong>${S.gameCode}</strong></span><button onclick="leaveGame()" class="btn-abandon">Leave game</button></div>`;
   }
 
   if(S.challengeId){
@@ -495,7 +502,7 @@ function rg(){
     h+=`<div class="govr"><h3>🏆 ${ldr} wins!</h3><p>Lowest score: ${T[ldr]} points</p></div>`;
   } else {
     h+=`<div class="dealer-bar"><span style="font-size:18px">🃏</span><span class="dl">Dealer: <strong>${cd}</strong></span>${nd?`<span class="nxt">Next: ${nd}</span>`:''}</div>`;
-    h+=`<div class="contract-bar"><span class="rnd">Deal ${S.cur} of 12</span><span class="ct">${C[S.cur-1]}</span><span class="badge">Initial meld</span></div>`;
+    h+=`<div class="contract-bar"><span class="rnd">Deal ${S.cur} of 12</span><span class="ct">${C[S.cur-1]}</span><span class="badge">Contract</span></div>`;
   }
 
   h+=`<div class="scoreboard"><table class="stbl"><thead><tr><th>Round</th>`;
@@ -632,6 +639,22 @@ function ri(cont){
   if(!S.active)h+=`<button class="btn" style="max-width:480px;margin-top:1rem" onclick="sh('ss')">New game</button>`;
   cont.innerHTML=h;
 }
+
+window.abandonGame=function(){
+  if(!confirm('Abandon this game? Scores will not be saved.'))return;
+  if(unsubGame){unsubGame();unsubGame=null;}
+  S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0,challengeId:null,gameCode:null};
+  isHost=false;
+  sh('ss');
+  renderChallengeOpts();
+};
+
+window.leaveGame=function(){
+  if(unsubGame){unsubGame();unsubGame=null;}
+  S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0,challengeId:null,gameCode:null};
+  isHost=false;
+  sh('ss');
+};
 </script>
 </body>
 </html>
