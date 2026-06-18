@@ -6,157 +6,194 @@
 <title>May I — Scorer</title>
 <style>
   :root {
-    --green-deep: #1a3a2a;
-    --green-mid: #2d6a4f;
-    --green-bright: #52b788;
-    --green-light: #d8f3dc;
-    --green-pale: #f0faf3;
-    --gold: #c9a84c;
-    --gold-light: #fdf3dc;
-    --cream: #faf8f2;
-    --card-bg: #ffffff;
-    --border: #e2e8e4;
-    --border-soft: #eef2ee;
-    --text-dark: #1a2e22;
-    --text-mid: #4a6358;
-    --text-muted: #8aa898;
-    --red-light: #fdf0f0;
-    --red-mid: #c0392b;
+    --sapphire:       #1a237e;
+    --sapphire-mid:   #283593;
+    --sapphire-soft:  #3949ab;
+    --sapphire-pale:  #e8eaf6;
+    --ruby:           #880e4f;
+    --ruby-mid:       #ad1457;
+    --ruby-light:     #fce4ec;
+    --emerald:        #1b5e20;
+    --emerald-mid:    #2e7d32;
+    --emerald-light:  #e8f5e9;
+    --amethyst:       #4a148c;
+    --amethyst-mid:   #6a1b9a;
+    --amethyst-light: #f3e5f5;
+    --gold:           #f9a825;
+    --gold-light:     #fff8e1;
+    --cream:          #fafafa;
+    --card-bg:        #ffffff;
+    --border:         #e0e0e0;
+    --border-soft:    #f0f0f0;
+    --text-dark:      #1a1a2e;
+    --text-mid:       #455a64;
+    --text-muted:     #90a4ae;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh;padding:1rem}
-  .app{max-width:720px;margin:0 auto;padding-bottom:3rem}
+  .app{max-width:760px;margin:0 auto;padding-bottom:3rem}
 
-  /* Top bar */
-  .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:2px solid var(--green-light)}
-  .top-bar h1{font-size:22px;font-weight:700;color:var(--green-deep);letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
-  .top-bar h1 span.suit{color:var(--gold)}
-  .top-bar small{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px}
+  .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:3px solid var(--sapphire-pale);background:linear-gradient(135deg,var(--sapphire) 0%,var(--amethyst) 100%);margin:-1rem -1rem 1.5rem;padding:1rem 1.25rem 1rem;border-radius:0 0 16px 16px}
+  .top-bar h1{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
+  .top-bar h1 .suit{color:var(--gold)}
+  .top-bar small{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px}
 
-  /* Nav */
-  .nav{display:flex;gap:6px;margin-bottom:1.25rem}
+  .nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
   .nav-btn{padding:7px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-mid);cursor:pointer;transition:all 0.15s}
-  .nav-btn.active{background:var(--green-deep);border-color:var(--green-deep);color:#fff;font-weight:500}
-  .nav-btn:hover:not(.active){background:var(--green-pale);border-color:var(--green-bright)}
+  .nav-btn.active{background:var(--sapphire);border-color:var(--sapphire);color:#fff;font-weight:600}
+  .nav-btn:hover:not(.active){background:var(--sapphire-pale);border-color:var(--sapphire-soft);color:var(--sapphire)}
 
-  /* Screens */
   .screen{display:none}.screen.active{display:block}
 
-  /* Cards */
-  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(26,58,42,0.06)}
-  .card h2{font-size:19px;font-weight:700;color:var(--green-deep);margin-bottom:4px}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(26,35,126,0.07)}
+  .card h2{font-size:19px;font-weight:700;color:var(--sapphire);margin-bottom:4px}
   .card .sub{font-size:14px;color:var(--text-muted);margin-bottom:1.25rem}
 
-  /* Form */
   .field{margin-bottom:1rem}
-  .field label{display:block;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px}
-  .field input{width:100%;height:40px;padding:0 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--cream);color:var(--text-dark);outline:none;transition:border-color 0.15s}
-  .field input:focus{border-color:var(--green-bright);background:#fff}
+  .field label{display:block;font-size:11px;font-weight:700;color:var(--text-mid);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.6px}
+  .field input,.field select{width:100%;height:40px;padding:0 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;background:#fff;color:var(--text-dark);outline:none;transition:border-color 0.15s}
+  .field input:focus,.field select:focus{border-color:var(--sapphire-soft)}
   .pcount-row{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem}
-  .pcount-row label{font-size:12px;font-weight:600;color:var(--text-mid);white-space:nowrap;text-transform:uppercase;letter-spacing:0.5px}
-  .pcount-row input[type=range]{flex:1;accent-color:var(--green-mid);height:4px}
-  .pcount-row span{font-size:20px;font-weight:700;min-width:22px;color:var(--green-deep)}
+  .pcount-row label{font-size:11px;font-weight:700;color:var(--text-mid);white-space:nowrap;text-transform:uppercase;letter-spacing:0.6px}
+  .pcount-row input[type=range]{flex:1;accent-color:var(--sapphire)}
+  .pcount-row span{font-size:20px;font-weight:800;min-width:22px;color:var(--sapphire)}
   .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem}
-  .pitem label{font-size:12px;font-weight:600;color:var(--text-mid);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px}
-  .pitem input{width:100%;height:38px;padding:0 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;background:var(--cream);color:var(--text-dark);outline:none}
-  .pitem input:focus{border-color:var(--green-bright);background:#fff}
+  .pitem label{font-size:11px;font-weight:700;color:var(--text-mid);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px}
+  .pitem input{width:100%;height:38px;padding:0 10px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;background:#fff;color:var(--text-dark);outline:none}
+  .pitem input:focus{border-color:var(--sapphire-soft)}
 
-  /* Dealer picker */
   .dealer-section{margin-bottom:1.25rem}
-  .dealer-section > label{display:block;font-size:12px;font-weight:600;color:var(--text-mid);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+  .dealer-section > label{display:block;font-size:11px;font-weight:700;color:var(--text-mid);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.6px}
   .dealer-note{font-size:12px;color:var(--text-muted);font-weight:400;text-transform:none;letter-spacing:0}
   .dealer-opts{display:flex;flex-wrap:wrap;gap:6px}
-  .dopt{padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:13px;color:var(--text-mid);cursor:pointer;background:var(--card-bg);transition:all 0.15s}
-  .dopt:hover{border-color:var(--green-bright);color:var(--green-mid)}
-  .dopt.sel{background:var(--green-deep);border-color:var(--green-deep);color:#fff;font-weight:500}
+  .dopt{padding:6px 14px;border:1.5px solid var(--border);border-radius:20px;font-size:13px;color:var(--text-mid);cursor:pointer;background:#fff;transition:all 0.15s}
+  .dopt:hover{border-color:var(--sapphire-soft);color:var(--sapphire)}
+  .dopt.sel{background:var(--sapphire);border-color:var(--sapphire);color:#fff;font-weight:600}
 
-  /* Buttons */
-  .btn{width:100%;padding:12px;background:var(--green-deep);border:none;border-radius:10px;font-size:15px;font-weight:600;color:#fff;cursor:pointer;margin-bottom:8px;letter-spacing:0.2px;transition:background 0.15s}
-  .btn:hover{background:var(--green-mid)}
-  .btn-outline{width:100%;padding:11px;background:transparent;border:1px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer}
-  .btn-outline:hover{background:var(--green-pale);border-color:var(--green-bright);color:var(--green-mid)}
+  /* Challenge section on setup */
+  .challenge-section{background:var(--amethyst-light);border:1.5px solid #ce93d8;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem}
+  .challenge-section > .cs-title{font-size:11px;font-weight:700;color:var(--amethyst);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .challenge-opts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+  .copt{padding:5px 13px;border:1.5px solid #ce93d8;border-radius:20px;font-size:13px;color:var(--amethyst-mid);cursor:pointer;background:#fff;transition:all 0.15s}
+  .copt:hover{background:var(--amethyst-light)}
+  .copt.sel{background:var(--amethyst);border-color:var(--amethyst);color:#fff;font-weight:600}
+  .new-challenge-row{display:flex;gap:8px;margin-top:8px}
+  .new-challenge-row input{flex:1;height:36px;padding:0 10px;border:1.5px solid #ce93d8;border-radius:8px;font-size:13px;background:#fff;color:var(--text-dark);outline:none}
+  .new-challenge-row input:focus{border-color:var(--amethyst)}
+  .new-challenge-row button{padding:0 14px;height:36px;background:var(--amethyst);border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+  .no-challenge{font-size:12px;color:var(--text-muted);font-style:italic}
+
+  .btn{width:100%;padding:12px;background:var(--sapphire);border:none;border-radius:10px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;margin-bottom:8px;letter-spacing:0.2px;transition:background 0.15s}
+  .btn:hover{background:var(--sapphire-soft)}
+  .btn-outline{width:100%;padding:11px;background:transparent;border:1.5px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer;transition:all 0.15s}
+  .btn-outline:hover{background:var(--sapphire-pale);border-color:var(--sapphire-soft);color:var(--sapphire)}
 
   /* Dealer banner */
-  .dealer-bar{background:var(--green-deep);border-radius:10px;padding:11px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .dealer-bar{background:linear-gradient(135deg,var(--sapphire),var(--amethyst));border-radius:10px;padding:11px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .dealer-bar .dl{font-size:14px;color:#fff}
   .dealer-bar .dl strong{font-weight:700;color:var(--gold)}
   .dealer-bar .nxt{font-size:12px;color:rgba(255,255,255,0.55);margin-left:auto}
 
+  /* Challenge pill on game screen */
+  .challenge-pill{display:inline-flex;align-items:center;gap:6px;background:var(--amethyst);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:10px}
+  .challenge-pill .gem{font-size:14px}
+
   /* Contract banner */
-  .contract-bar{background:var(--gold-light);border:1px solid #e8d49a;border-radius:10px;padding:10px 16px;margin-bottom:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .contract-bar{background:var(--gold-light);border:1.5px solid #ffe082;border-radius:10px;padding:10px 16px;margin-bottom:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .contract-bar .rnd{font-size:11px;font-weight:700;color:#8a6a1a;text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap}
   .contract-bar .ct{font-size:14px;font-weight:600;color:#5a4010}
-  .contract-bar .badge{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--gold);color:#fff;font-weight:600;margin-left:auto;white-space:nowrap}
+  .contract-bar .badge{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--gold);color:#fff;font-weight:700;margin-left:auto;white-space:nowrap}
 
   /* Scoreboard */
-  .scoreboard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:auto;margin-bottom:1rem;box-shadow:0 1px 4px rgba(26,58,42,0.06)}
+  .scoreboard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:auto;margin-bottom:1rem;box-shadow:0 2px 8px rgba(26,35,126,0.07)}
   .stbl{width:100%;border-collapse:collapse;min-width:400px}
-  .stbl th{font-size:11px;font-weight:700;color:var(--text-muted);padding:9px 10px;text-align:center;border-bottom:2px solid var(--green-light);background:var(--green-pale);text-transform:uppercase;letter-spacing:0.5px}
+  .stbl th{font-size:11px;font-weight:700;color:var(--text-muted);padding:9px 10px;text-align:center;border-bottom:2px solid var(--sapphire-pale);background:var(--sapphire-pale);text-transform:uppercase;letter-spacing:0.5px}
   .stbl th:first-child{text-align:left;min-width:160px}
   .stbl td{font-size:13px;padding:7px 10px;text-align:center;border-bottom:1px solid var(--border-soft);color:var(--text-dark)}
   .stbl td:first-child{text-align:left}
   .stbl tr:last-child td{border-bottom:none}
-  .rl{font-size:12px;font-weight:700;color:var(--green-deep);display:block}
+  .rl{font-size:12px;font-weight:700;color:var(--sapphire);display:block}
   .rc{font-size:10px;color:var(--text-muted);display:block;margin-top:1px;white-space:normal;line-height:1.3}
   .rd{font-size:10px;color:var(--text-mid);display:block;margin-top:1px}
   .rd .star{color:var(--gold)}
-  .stbl tr.cur td{background:var(--green-pale)}
-  .stbl tr.cur td:first-child{border-left:3px solid var(--green-bright)}
-  .stbl tr.tot td{font-weight:700;font-size:13px;background:var(--green-light);border-top:2px solid var(--green-bright)}
-  .lh{color:var(--green-mid)!important;font-weight:700!important}
-  .lc{color:var(--green-mid)!important;font-weight:700!important}
+  .stbl tr.cur td{background:var(--sapphire-pale)}
+  .stbl tr.cur td:first-child{border-left:3px solid var(--sapphire-soft)}
+  .stbl tr.tot td{font-weight:700;font-size:13px;background:linear-gradient(90deg,var(--sapphire-pale),#fff);border-top:2px solid var(--sapphire-soft)}
+  .lh{color:var(--emerald-mid)!important;font-weight:700!important}
+  .lc{color:var(--emerald-mid)!important;font-weight:700!important}
 
   /* Score entry */
-  .ecard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 1px 4px rgba(26,58,42,0.06)}
-  .ecard h3{font-size:15px;font-weight:700;color:var(--green-deep);margin-bottom:3px}
+  .ecard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(26,35,126,0.07)}
+  .ecard h3{font-size:15px;font-weight:700;color:var(--sapphire);margin-bottom:3px}
   .ecard .sub{font-size:13px;color:var(--text-muted);margin-bottom:12px}
   .egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:12px}
   .ei label{font-size:11px;font-weight:700;color:var(--text-mid);display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:0.4px}
-  .ei input{width:100%;height:40px;padding:0 10px;border:1px solid var(--border);border-radius:8px;font-size:16px;text-align:center;background:var(--cream);color:var(--text-dark);outline:none;font-weight:600}
-  .ei input:focus{border-color:var(--green-bright);background:#fff}
+  .ei input{width:100%;height:40px;padding:0 10px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;text-align:center;background:#fff;color:var(--text-dark);outline:none;font-weight:600}
+  .ei input:focus{border-color:var(--sapphire-soft)}
   .brow{display:flex;gap:8px}
-  .bsave{flex:1;padding:11px;background:var(--green-deep);border:none;border-radius:10px;font-size:14px;font-weight:600;color:#fff;cursor:pointer;transition:background 0.15s}
-  .bsave:hover{background:var(--green-mid)}
-  .bclr{flex:1;padding:11px;background:transparent;border:1px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer}
-  .bclr:hover{background:var(--green-pale)}
+  .bsave{flex:1;padding:11px;background:var(--sapphire);border:none;border-radius:10px;font-size:14px;font-weight:700;color:#fff;cursor:pointer}
+  .bsave:hover{background:var(--sapphire-soft)}
+  .bclr{flex:1;padding:11px;background:transparent;border:1.5px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer}
+  .bclr:hover{background:var(--sapphire-pale)}
 
   /* Game over */
-  .govr{background:var(--green-deep);border-radius:12px;padding:18px;margin-bottom:1rem;text-align:center}
-  .govr h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:4px}
-  .govr p{font-size:14px;color:var(--green-bright)}
+  .govr{background:linear-gradient(135deg,var(--sapphire),var(--amethyst));border-radius:14px;padding:20px;margin-bottom:1rem;text-align:center}
+  .govr h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px}
+  .govr p{font-size:14px;color:rgba(255,255,255,0.75)}
 
   /* History */
-  .htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
-  .htop h2{font-size:20px;font-weight:700;color:var(--green-deep)}
-  .stitle{font-size:13px;font-weight:700;color:var(--text-mid);margin-bottom:10px;margin-top:1.5rem;text-transform:uppercase;letter-spacing:0.6px}
+  .htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px}
+  .htop h2{font-size:20px;font-weight:800;color:var(--sapphire)}
+  .stitle{font-size:11px;font-weight:700;color:var(--text-mid);margin-bottom:10px;margin-top:1.5rem;text-transform:uppercase;letter-spacing:0.7px}
   .hofg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:1rem}
-  .hofc{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;box-shadow:0 1px 4px rgba(26,58,42,0.06)}
+  .hofc{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1rem;text-align:center;box-shadow:0 2px 6px rgba(26,35,126,0.07)}
   .hofc:first-child{border-color:var(--gold);background:var(--gold-light)}
-  .hofc .rnk{font-size:16px;margin-bottom:4px}
-  .hofc .nm{font-size:13px;font-weight:700;color:var(--green-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .hofc .wn{font-size:28px;font-weight:800;color:var(--green-deep);line-height:1.1}
+  .hofc .rnk{font-size:18px;margin-bottom:4px}
+  .hofc .nm{font-size:13px;font-weight:700;color:var(--sapphire);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hofc .wn{font-size:28px;font-weight:800;color:var(--sapphire);line-height:1.1}
   .hofc .lb{font-size:11px;color:var(--text-muted)}
-  .grec{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;box-shadow:0 1px 3px rgba(26,58,42,0.05)}
-  .grh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .grec{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:1rem 1.25rem;margin-bottom:8px;box-shadow:0 1px 4px rgba(26,35,126,0.05)}
+  .grh{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;flex-wrap:wrap;gap:4px}
   .grd{font-size:12px;color:var(--text-muted)}
-  .grw{font-size:13px;font-weight:700;color:var(--green-mid)}
+  .grw{font-size:13px;font-weight:700;color:var(--emerald-mid)}
   .ptags{display:flex;flex-wrap:wrap;gap:5px}
-  .ptag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--green-pale);color:var(--text-mid);border:1px solid var(--border-soft)}
-  .ptag.w{background:var(--green-deep);color:#fff;font-weight:600;border-color:var(--green-deep)}
+  .ptag{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--sapphire-pale);color:var(--sapphire);border:1px solid #c5cae9}
+  .ptag.w{background:var(--emerald-mid);color:#fff;font-weight:600;border-color:var(--emerald-mid)}
   .empty{text-align:center;padding:2.5rem;color:var(--text-muted);font-size:14px}
-  .ghead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1rem}
-  .ghead h2{font-size:18px;font-weight:700;color:var(--green-deep)}
-  .ghead span{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+  .ghead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.75rem;flex-wrap:wrap;gap:6px}
+  .ghead h2{font-size:18px;font-weight:700;color:var(--sapphire)}
+  .ghead span{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+
+  /* Challenge screen */
+  .challenge-card{background:var(--card-bg);border:1.5px solid #ce93d8;border-radius:14px;padding:1.25rem;margin-bottom:10px;box-shadow:0 2px 8px rgba(74,20,140,0.08)}
+  .challenge-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:6px}
+  .challenge-name{font-size:16px;font-weight:700;color:var(--amethyst);display:flex;align-items:center;gap:6px}
+  .challenge-dates{font-size:12px;color:var(--text-muted)}
+  .challenge-status{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--amethyst);color:#fff}
+  .challenge-status.closed{background:var(--text-muted)}
+  .c-leaderboard{width:100%;border-collapse:collapse;margin-top:8px}
+  .c-leaderboard th{font-size:11px;font-weight:700;color:var(--text-muted);padding:6px 8px;text-align:left;border-bottom:1.5px solid var(--amethyst-light);text-transform:uppercase;letter-spacing:0.4px}
+  .c-leaderboard th:last-child{text-align:center}
+  .c-leaderboard td{font-size:13px;padding:6px 8px;border-bottom:1px solid var(--border-soft);color:var(--text-dark)}
+  .c-leaderboard td:last-child{text-align:center;font-weight:700}
+  .c-leaderboard tr:last-child td{border-bottom:none}
+  .c-leaderboard tr.c-leader td{color:var(--amethyst);font-weight:700}
+  .c-leaderboard tr.c-leader td:first-child::before{content:'💎 '}
+  .btn-close-challenge{padding:7px 14px;background:var(--ruby);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;margin-top:10px}
+  .btn-close-challenge:hover{background:var(--ruby-mid)}
+  .gem-badge{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amethyst)}
+
   @media(max-width:500px){.pgrid{grid-template-columns:1fr}body{padding:.75rem}}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="top-bar">
-    <h1><span class="suit">♣</span> May I</h1>
+    <h1><span class="suit">♦</span> May I</h1>
     <small>Card game scorer</small>
   </div>
 
+  <!-- Setup -->
   <div id="ss" class="screen active">
     <div class="card">
       <h2>New game</h2>
@@ -172,22 +209,34 @@
         <label>First dealer <span class="dealer-note">— rotates clockwise each round</span></label>
         <div class="dealer-opts" id="do"></div>
       </div>
+      <!-- Challenge picker -->
+      <div class="challenge-section">
+        <div class="cs-title">💎 Add to a challenge <span style="font-weight:400;color:var(--amethyst-mid);text-transform:none;letter-spacing:0">(optional)</span></div>
+        <div class="challenge-opts" id="co"></div>
+        <div class="new-challenge-row">
+          <input type="text" id="new-c-name" placeholder="New challenge name e.g. India Challenge">
+          <button onclick="addChallenge()">+ Create</button>
+        </div>
+      </div>
       <button class="btn" onclick="go()">Start game</button>
-      <button class="btn-outline" onclick="sh('shist')">View past games</button>
+      <button class="btn-outline" onclick="sh('shist')">Past games &amp; challenges</button>
     </div>
   </div>
 
+  <!-- Game -->
   <div id="sg" class="screen">
     <div class="nav">
       <button class="nav-btn active" id="ns" onclick="gt('s')">Scoreboard</button>
       <button class="nav-btn" id="nh" onclick="gt('h')">History</button>
+      <button class="nav-btn" id="nc" onclick="gt('c')">Challenges</button>
     </div>
     <div id="gc"></div>
   </div>
 
+  <!-- History -->
   <div id="shist" class="screen">
     <div class="htop">
-      <h2>Game history</h2>
+      <h2>History &amp; Challenges</h2>
       <button class="btn-outline" style="width:auto;padding:7px 16px" onclick="sh('ss')">New game</button>
     </div>
     <div id="hc"></div>
@@ -196,12 +245,14 @@
 
 <script>
 const C=["2 sets of 3","1 set of 3 + 1 run of 4","2 sets of 4","1 set of 4 + 1 run of 4","1 set of 3 + 1 run of 5","2 runs of 4","3 sets of 3","1 set of 3 + 1 run of 6","2 sets of 3 + 1 run of 4","1 set of 3 + 1 run of 7","1 set of 5 + 1 run of 5","2 runs of 5"];
-let S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0};
-let H=JSON.parse(localStorage.getItem('mayi5')||'[]');
-function saveH(){localStorage.setItem('mayi5',JSON.stringify(H));}
+let S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0,challengeId:null};
+let H=JSON.parse(localStorage.getItem('mayi6')||'[]');
+let challenges=JSON.parse(localStorage.getItem('mayi6c')||'[]');
+function saveH(){localStorage.setItem('mayi6',JSON.stringify(H));}
+function saveC(){localStorage.setItem('mayi6c',JSON.stringify(challenges));}
 const td=()=>new Date().toISOString().split('T')[0];
 document.getElementById('gdate').value=td();
-let selD=0;
+let selD=0,selC=null;
 
 function upd(n){
   document.getElementById('cd').textContent=n;
@@ -233,11 +284,47 @@ function rdo(){
   });
 }
 
+function renderChallengeOpts(){
+  const cont=document.getElementById('co');cont.innerHTML='';
+  const active=challenges.filter(c=>!c.closed);
+  if(active.length===0){
+    cont.innerHTML='<span class="no-challenge">No active challenges yet — create one below</span>';
+    return;
+  }
+  // None option
+  const none=document.createElement('button');
+  none.className='copt'+(selC===null?' sel':'');
+  none.textContent='None';
+  none.onclick=()=>{selC=null;document.querySelectorAll('.copt').forEach(x=>x.classList.remove('sel'));none.classList.add('sel');};
+  cont.appendChild(none);
+  active.forEach(ch=>{
+    const b=document.createElement('button');
+    b.className='copt'+(selC===ch.id?' sel':'');
+    b.textContent=ch.name;
+    b.onclick=()=>{selC=ch.id;document.querySelectorAll('.copt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');};
+    cont.appendChild(b);
+  });
+}
+renderChallengeOpts();
+
+function addChallenge(){
+  const inp=document.getElementById('new-c-name');
+  const name=inp.value.trim();
+  if(!name)return;
+  const ch={id:Date.now(),name,created:td(),closed:false,games:[]};
+  challenges.push(ch);saveC();
+  selC=ch.id;
+  inp.value='';
+  renderChallengeOpts();
+  // re-select the new one
+  setTimeout(()=>{document.querySelectorAll('.copt').forEach(b=>{if(b.textContent===name){b.classList.add('sel');}});},50);
+}
+
 function dlr(r){return S.players[(S.fdIdx+(r-1))%S.players.length];}
 
 function go(){
   const pl=names(),d=document.getElementById('gdate').value||td();
-  S={players:pl,scores:{},cur:1,date:d,active:true,fdIdx:selD};
+  S={players:pl,scores:{},cur:1,date:d,active:true,fdIdx:selD,challengeId:selC};
   pl.forEach(p=>{S.scores[p]=Array(12).fill(null);});
   sh('sg');gt('s');
 }
@@ -250,10 +337,11 @@ function sh(s){
 }
 
 function gt(t){
-  document.getElementById('ns').classList.toggle('active',t==='s');
-  document.getElementById('nh').classList.toggle('active',t==='h');
+  ['s','h','c'].forEach(x=>document.getElementById('n'+x).classList.toggle('active',t===x));
   const gc=document.getElementById('gc');
-  if(t==='h'){gc.innerHTML='';ri(gc);}else rg();
+  if(t==='h'){gc.innerHTML='';ri(gc);}
+  else if(t==='c'){gc.innerHTML='';renderChallengesInto(gc);}
+  else rg();
 }
 
 function tots(){const t={};S.players.forEach(p=>{t[p]=S.scores[p].reduce((s,v)=>s+(v||0),0);});return t;}
@@ -267,12 +355,20 @@ function rg(){
   const cd=over?null:dlr(S.cur),nd=(!over&&S.cur<12)?dlr(S.cur+1):null;
   let h='';
   h+=`<div class="ghead"><h2>${fd(S.date)||'Current game'}</h2><span>${S.players.length} players</span></div>`;
+
+  // Challenge pill
+  if(S.challengeId){
+    const ch=challenges.find(c=>c.id===S.challengeId);
+    if(ch)h+=`<div style="margin-bottom:8px"><span class="challenge-pill"><span class="gem">💎</span>${ch.name}</span></div>`;
+  }
+
   if(over){
     h+=`<div class="govr"><h3>🏆 ${ldr} wins!</h3><p>Lowest score: ${T[ldr]} points</p></div>`;
   } else {
     h+=`<div class="dealer-bar"><span style="font-size:18px">🃏</span><span class="dl">Dealer: <strong>${cd}</strong></span>${nd?`<span class="nxt">Next: ${nd}</span>`:''}</div>`;
     h+=`<div class="contract-bar"><span class="rnd">Deal ${S.cur} of 12</span><span class="ct">${C[S.cur-1]}</span><span class="badge">Initial meld</span></div>`;
   }
+
   h+=`<div class="scoreboard"><table class="stbl"><thead><tr><th>Round</th>`;
   S.players.forEach(p=>{const l=p===ldr&&!over;h+=`<th class="${l?'lh':''}">${p}${l?' ↓':''}</th>`;});
   h+=`</tr></thead><tbody>`;
@@ -289,6 +385,7 @@ function rg(){
   h+=`<tr class="tot"><td><span class="rl">Total</span></td>`;
   S.players.forEach(p=>{const w=over&&p===ldr;h+=`<td class="${w?'lc':''}">${T[p]}${w?' 🏆':''}</td>`;});
   h+=`</tr></tbody></table></div>`;
+
   if(!over){
     h+=`<div class="ecard"><h3>Enter deal ${S.cur} scores</h3><p class="sub">Penalty points remaining in each hand</p><div class="egrid">`;
     S.players.forEach(p=>{const k='e_'+p.replace(/\W/g,'_');h+=`<div class="ei"><label>${p}</label><input type="number" id="${k}" min="0" placeholder="0"></div>`;});
@@ -307,8 +404,76 @@ function sub(){
 
 function sav(){
   const T=tots(),w=lead();
-  H.unshift({date:S.date,players:S.players.map(p=>({name:p,total:T[p]})),winner:w,firstDealer:S.players[S.fdIdx],scores:JSON.parse(JSON.stringify(S.scores))});
-  saveH();S.active=false;sh('shist');
+  const rec={date:S.date,players:S.players.map(p=>({name:p,total:T[p]})),winner:w,firstDealer:S.players[S.fdIdx],challengeId:S.challengeId,scores:JSON.parse(JSON.stringify(S.scores))};
+  H.unshift(rec);saveH();
+  // Add to challenge
+  if(S.challengeId){
+    const ch=challenges.find(c=>c.id===S.challengeId);
+    if(ch){ch.games.push({date:S.date,winner:w,players:S.players});saveC();}
+  }
+  S.active=false;sh('shist');
+}
+
+function getChallengeLeaderboard(ch){
+  const wc={};
+  ch.games.forEach(g=>{wc[g.winner]=(wc[g.winner]||0)+1;});
+  // get all players from first game
+  const players=ch.games.length>0?ch.games[0].players:[];
+  players.forEach(p=>{if(!wc[p])wc[p]=0;});
+  return Object.entries(wc).sort((a,b)=>b[1]-a[1]);
+}
+
+function renderChallengesInto(cont){
+  let h='';
+  const active=challenges.filter(c=>!c.closed);
+  const closed=challenges.filter(c=>c.closed);
+  if(challenges.length===0){h='<div class="empty">No challenges yet — create one when starting a game!</div>';}
+  else{
+    if(active.length>0){
+      h+=`<div class="stitle">Active challenges</div>`;
+      active.forEach(ch=>{h+=renderChallenge(ch,true);});
+    }
+    if(closed.length>0){
+      h+=`<div class="stitle">Completed challenges</div>`;
+      closed.forEach(ch=>{h+=renderChallenge(ch,false);});
+    }
+  }
+  cont.innerHTML=h;
+}
+
+function renderChallenge(ch,showClose){
+  const lb=getChallengeLeaderboard(ch);
+  const topWinner=lb.length>0?lb[0][0]:null;
+  let h=`<div class="challenge-card">
+    <div class="challenge-card-header">
+      <span class="challenge-name">💎 ${ch.name}</span>
+      <span class="challenge-status ${ch.closed?'closed':''}">${ch.closed?'Completed':'Active'}</span>
+    </div>
+    <div class="challenge-dates">Started ${fd(ch.created)}${ch.closed?' · Ended '+fd(ch.closedDate):''} · ${ch.games.length} game${ch.games.length===1?'':'s'}</div>`;
+  if(lb.length>0){
+    h+=`<table class="c-leaderboard"><thead><tr><th>Player</th><th>Wins</th></tr></thead><tbody>`;
+    lb.forEach(([name,wins])=>{
+      const isTop=name===topWinner&&!ch.closed;
+      h+=`<tr class="${isTop?'c-leader':''}"><td>${name}</td><td>${wins}</td></tr>`;
+    });
+    h+=`</tbody></table>`;
+  } else {
+    h+=`<p style="font-size:13px;color:var(--text-muted);margin-top:8px">No games played yet</p>`;
+  }
+  if(showClose&&ch.games.length>0){
+    h+=`<button class="btn-close-challenge" onclick="closeChallenge(${ch.id})">Close challenge</button>`;
+  }
+  h+=`</div>`;
+  return h;
+}
+
+function closeChallenge(id){
+  const ch=challenges.find(c=>c.id===id);
+  if(ch){ch.closed=true;ch.closedDate=td();saveC();}
+  const gc=document.getElementById('gc');
+  if(gc)renderChallengesInto(gc);
+  const hc=document.getElementById('hc');
+  if(hc)ri(hc);
 }
 
 function ri(cont){
@@ -316,17 +481,31 @@ function ri(cont){
   const sk=Object.entries(wc).sort((a,b)=>b[1]-a[1]);
   const md=['🥇','🥈','🥉'];
   let h='';
+
+  // Challenges summary
+  const activeCh=challenges.filter(c=>!c.closed);
+  const closedCh=challenges.filter(c=>c.closed);
+  if(challenges.length>0){
+    h+=`<div class="stitle">Challenges</div>`;
+    [...activeCh,...closedCh].forEach(ch=>{h+=renderChallenge(ch,!ch.closed);});
+  }
+
   if(sk.length>0){
-    h+=`<div class="stitle">Hall of fame</div><div class="hofg">`;
+    h+=`<div class="stitle">Hall of fame — all games</div><div class="hofg">`;
     sk.forEach(([n,w],i)=>{h+=`<div class="hofc"><div class="rnk">${md[i]||'#'+(i+1)}</div><div class="nm">${n}</div><div class="wn">${w}</div><div class="lb">${w===1?'win':'wins'}</div></div>`;});
     h+=`</div>`;
   }
+
   if(H.length===0){h+=`<div class="empty">No games yet — play your first game!</div>`;}
   else{
     h+=`<div class="stitle">Past games</div>`;
     H.forEach(g=>{
       const ps=[...g.players].sort((a,b)=>a.total-b.total);
-      h+=`<div class="grec"><div class="grh"><span class="grd">${fd(g.date)}${g.firstDealer?' · First dealer: '+g.firstDealer:''}</span><span class="grw">🏆 ${g.winner}</span></div><div class="ptags">`;
+      const ch=g.challengeId?challenges.find(c=>c.id===g.challengeId):null;
+      h+=`<div class="grec"><div class="grh">
+        <span class="grd">${fd(g.date)}${g.firstDealer?' · First dealer: '+g.firstDealer:''}${ch?` · <span style="color:var(--amethyst);font-weight:600">💎 ${ch.name}</span>`:''}</span>
+        <span class="grw">🏆 ${g.winner}</span>
+      </div><div class="ptags">`;
       ps.forEach(p=>{h+=`<span class="ptag ${p.name===g.winner?'w':''}">${p.name}: ${p.total}</span>`;});
       h+=`</div></div>`;
     });
