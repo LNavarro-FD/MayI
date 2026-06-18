@@ -204,7 +204,7 @@
   <div class="top-bar">
     <h1><span class="suit">♦</span> May I</h1>
     <div class="top-bar-right">
-      <small>Card game scorer · v1.1</small>
+      <small>Card game scorer · v1.2</small>
       <span class="sync-status syncing" id="sync-status">Connecting...</span>
     </div>
   </div>
@@ -418,17 +418,30 @@ window.go=async function(){
 
 window.joinGame=async function(){
   const code=document.getElementById('join-code').value.trim().toUpperCase();
-  if(!code||code.length<4)return;
+  if(!code||code.length<4){alert('Please enter a valid game code.');return;}
   setSyncStatus('syncing');
   try{
-    const snap=await get(ref(db,'live/'+code));
-    if(!snap.exists()){alert('Game not found. Check the code and try again.');setSyncStatus('online');return;}
-    S={...snap.val(),gameCode:code};
+    const [gameSnap,cSnap]=await Promise.all([
+      get(ref(db,'live/'+code)),
+      get(ref(db,'challenges'))
+    ]);
+    if(!gameSnap.exists()){alert('Game not found. Check the code and try again.');setSyncStatus('online');return;}
+    // Load challenges so scoreboard renders correctly
+    challenges=[];
+    if(cSnap.exists()){
+      Object.entries(cSnap.val()).forEach(([id,c])=>{challenges.push({...c,id});});
+    }
+    S={...gameSnap.val(),gameCode:code};
     isHost=false;
     subscribeToGame(code);
-    sh('sg');gt('s');
+    sh('sg');
+    gt('s');
     setSyncStatus('online');
-  }catch(e){setSyncStatus('offline');alert('Could not connect. Check your internet and try again.');}
+  }catch(e){
+    console.error(e);
+    setSyncStatus('offline');
+    alert('Could not connect. Check your internet connection and try again.');
+  }
 };
 
 function subscribeToGame(code){
@@ -437,13 +450,13 @@ function subscribeToGame(code){
     if(!snap.exists())return;
     const data=snap.val();
     S={...data,gameCode:code};
+    setSyncStatus('online');
     const gc=document.getElementById('gc');
     if(gc&&document.getElementById('sg').classList.contains('active')){
       const activeTab=document.getElementById('ns').classList.contains('active')?'s':
                       document.getElementById('nh').classList.contains('active')?'h':'c';
       if(activeTab==='s')rg();
     }
-    setSyncStatus('online');
   });
 }
 
