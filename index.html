@@ -33,10 +33,15 @@
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--cream);color:var(--text-dark);min-height:100vh;padding:1rem}
   .app{max-width:760px;margin:0 auto;padding-bottom:3rem}
 
-  .top-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:3px solid var(--sapphire-pale);background:linear-gradient(135deg,var(--sapphire) 0%,var(--amethyst) 100%);margin:-1rem -1rem 1.5rem;padding:1rem 1.25rem 1rem;border-radius:0 0 16px 16px}
+  .top-bar{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,var(--sapphire) 0%,var(--amethyst) 100%);margin:-1rem -1rem 1.5rem;padding:1rem 1.25rem;border-radius:0 0 16px 16px}
   .top-bar h1{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.5px;display:flex;align-items:center;gap:8px}
   .top-bar h1 .suit{color:var(--gold)}
+  .top-bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px}
   .top-bar small{font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:1px}
+  .sync-status{font-size:11px;padding:3px 8px;border-radius:10px;font-weight:600}
+  .sync-status.online{background:rgba(46,125,50,0.7);color:#fff}
+  .sync-status.offline{background:rgba(136,14,79,0.7);color:#fff}
+  .sync-status.syncing{background:rgba(249,168,37,0.7);color:#fff}
 
   .nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
   .nav-btn{padding:7px 16px;background:var(--card-bg);border:1px solid var(--border);border-radius:8px;font-size:13px;color:var(--text-mid);cursor:pointer;transition:all 0.15s}
@@ -70,9 +75,17 @@
   .dopt:hover{border-color:var(--sapphire-soft);color:var(--sapphire)}
   .dopt.sel{background:var(--sapphire);border-color:var(--sapphire);color:#fff;font-weight:600}
 
-  /* Challenge section on setup */
+  /* Game code join */
+  .join-section{background:var(--sapphire-pale);border:1.5px solid #9fa8da;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem}
+  .join-section .js-title{font-size:11px;font-weight:700;color:var(--sapphire);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px}
+  .join-row{display:flex;gap:8px}
+  .join-row input{flex:1;height:38px;padding:0 12px;border:1.5px solid #9fa8da;border-radius:8px;font-size:14px;background:#fff;color:var(--text-dark);outline:none;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+  .join-row input:focus{border-color:var(--sapphire)}
+  .join-row button{padding:0 16px;height:38px;background:var(--sapphire);border:none;border-radius:8px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+
+  /* Challenge section */
   .challenge-section{background:var(--amethyst-light);border:1.5px solid #ce93d8;border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.25rem}
-  .challenge-section > .cs-title{font-size:11px;font-weight:700;color:var(--amethyst);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+  .challenge-section > .cs-title{font-size:11px;font-weight:700;color:var(--amethyst);text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px}
   .challenge-opts{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
   .copt{padding:5px 13px;border:1.5px solid #ce93d8;border-radius:20px;font-size:13px;color:var(--amethyst-mid);cursor:pointer;background:#fff;transition:all 0.15s}
   .copt:hover{background:var(--amethyst-light)}
@@ -88,23 +101,24 @@
   .btn-outline{width:100%;padding:11px;background:transparent;border:1.5px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer;transition:all 0.15s}
   .btn-outline:hover{background:var(--sapphire-pale);border-color:var(--sapphire-soft);color:var(--sapphire)}
 
-  /* Dealer banner */
+  /* Game code display */
+  .game-code-bar{background:var(--sapphire-pale);border:1.5px solid #9fa8da;border-radius:10px;padding:10px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .game-code-bar .gc-label{font-size:11px;font-weight:700;color:var(--sapphire);text-transform:uppercase;letter-spacing:0.5px}
+  .game-code-bar .gc-code{font-size:20px;font-weight:800;color:var(--sapphire);letter-spacing:4px}
+  .game-code-bar .gc-hint{font-size:11px;color:var(--text-muted);margin-left:auto}
+
   .dealer-bar{background:linear-gradient(135deg,var(--sapphire),var(--amethyst));border-radius:10px;padding:11px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .dealer-bar .dl{font-size:14px;color:#fff}
   .dealer-bar .dl strong{font-weight:700;color:var(--gold)}
   .dealer-bar .nxt{font-size:12px;color:rgba(255,255,255,0.55);margin-left:auto}
 
-  /* Challenge pill on game screen */
   .challenge-pill{display:inline-flex;align-items:center;gap:6px;background:var(--amethyst);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:10px}
-  .challenge-pill .gem{font-size:14px}
 
-  /* Contract banner */
   .contract-bar{background:var(--gold-light);border:1.5px solid #ffe082;border-radius:10px;padding:10px 16px;margin-bottom:1rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
   .contract-bar .rnd{font-size:11px;font-weight:700;color:#8a6a1a;text-transform:uppercase;letter-spacing:0.6px;white-space:nowrap}
   .contract-bar .ct{font-size:14px;font-weight:600;color:#5a4010}
   .contract-bar .badge{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--gold);color:#fff;font-weight:700;margin-left:auto;white-space:nowrap}
 
-  /* Scoreboard */
   .scoreboard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;overflow:auto;margin-bottom:1rem;box-shadow:0 2px 8px rgba(26,35,126,0.07)}
   .stbl{width:100%;border-collapse:collapse;min-width:400px}
   .stbl th{font-size:11px;font-weight:700;color:var(--text-muted);padding:9px 10px;text-align:center;border-bottom:2px solid var(--sapphire-pale);background:var(--sapphire-pale);text-transform:uppercase;letter-spacing:0.5px}
@@ -122,7 +136,6 @@
   .lh{color:var(--emerald-mid)!important;font-weight:700!important}
   .lc{color:var(--emerald-mid)!important;font-weight:700!important}
 
-  /* Score entry */
   .ecard{background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem;margin-bottom:1rem;box-shadow:0 2px 8px rgba(26,35,126,0.07)}
   .ecard h3{font-size:15px;font-weight:700;color:var(--sapphire);margin-bottom:3px}
   .ecard .sub{font-size:13px;color:var(--text-muted);margin-bottom:12px}
@@ -136,12 +149,10 @@
   .bclr{flex:1;padding:11px;background:transparent;border:1.5px solid var(--border);border-radius:10px;font-size:14px;color:var(--text-mid);cursor:pointer}
   .bclr:hover{background:var(--sapphire-pale)}
 
-  /* Game over */
   .govr{background:linear-gradient(135deg,var(--sapphire),var(--amethyst));border-radius:14px;padding:20px;margin-bottom:1rem;text-align:center}
   .govr h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px}
   .govr p{font-size:14px;color:rgba(255,255,255,0.75)}
 
-  /* History */
   .htop{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px}
   .htop h2{font-size:20px;font-weight:800;color:var(--sapphire)}
   .stitle{font-size:11px;font-weight:700;color:var(--text-mid);margin-bottom:10px;margin-top:1.5rem;text-transform:uppercase;letter-spacing:0.7px}
@@ -164,7 +175,6 @@
   .ghead h2{font-size:18px;font-weight:700;color:var(--sapphire)}
   .ghead span{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 
-  /* Challenge screen */
   .challenge-card{background:var(--card-bg);border:1.5px solid #ce93d8;border-radius:14px;padding:1.25rem;margin-bottom:10px;box-shadow:0 2px 8px rgba(74,20,140,0.08)}
   .challenge-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:6px}
   .challenge-name{font-size:16px;font-weight:700;color:var(--amethyst);display:flex;align-items:center;gap:6px}
@@ -181,7 +191,8 @@
   .c-leaderboard tr.c-leader td:first-child::before{content:'💎 '}
   .btn-close-challenge{padding:7px 14px;background:var(--ruby);border:none;border-radius:8px;color:#fff;font-size:12px;font-weight:600;cursor:pointer;margin-top:10px}
   .btn-close-challenge:hover{background:var(--ruby-mid)}
-  .gem-badge{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amethyst)}
+
+  .loading{text-align:center;padding:2rem;color:var(--text-muted);font-size:14px}
 
   @media(max-width:500px){.pgrid{grid-template-columns:1fr}body{padding:.75rem}}
 </style>
@@ -190,7 +201,10 @@
 <div class="app">
   <div class="top-bar">
     <h1><span class="suit">♦</span> May I</h1>
-    <small>Card game scorer</small>
+    <div class="top-bar-right">
+      <small>Card game scorer</small>
+      <span class="sync-status syncing" id="sync-status">Connecting...</span>
+    </div>
   </div>
 
   <!-- Setup -->
@@ -209,17 +223,28 @@
         <label>First dealer <span class="dealer-note">— rotates clockwise each round</span></label>
         <div class="dealer-opts" id="do"></div>
       </div>
-      <!-- Challenge picker -->
       <div class="challenge-section">
         <div class="cs-title">💎 Add to a challenge <span style="font-weight:400;color:var(--amethyst-mid);text-transform:none;letter-spacing:0">(optional)</span></div>
         <div class="challenge-opts" id="co"></div>
         <div class="new-challenge-row">
-          <input type="text" id="new-c-name" placeholder="New challenge name e.g. India Challenge">
+          <input type="text" id="new-c-name" placeholder="New challenge e.g. India Challenge">
           <button onclick="addChallenge()">+ Create</button>
         </div>
       </div>
       <button class="btn" onclick="go()">Start game</button>
       <button class="btn-outline" onclick="sh('shist')">Past games &amp; challenges</button>
+    </div>
+
+    <div class="card">
+      <h2>Join a game</h2>
+      <p class="sub">Enter a game code to follow along on this device</p>
+      <div class="join-section">
+        <div class="js-title">Enter game code</div>
+        <div class="join-row">
+          <input type="text" id="join-code" maxlength="6" placeholder="ABC123">
+          <button onclick="joinGame()">Join</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -243,16 +268,74 @@
   </div>
 </div>
 
-<script>
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, get, onValue, push, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDa8F5R2ZPHDFpH-56W5KlqiISKIrWNsEs",
+  authDomain: "may-i-scorer.firebaseapp.com",
+  databaseURL: "https://may-i-scorer-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "may-i-scorer",
+  storageBucket: "may-i-scorer.firebasestorage.app",
+  messagingSenderId: "757894408849",
+  appId: "1:757894408849:web:3dc6dd57b15170e17ead30"
+};
+
+const fbApp = initializeApp(firebaseConfig);
+const db = getDatabase(fbApp);
+
 const C=["2 sets of 3","1 set of 3 + 1 run of 4","2 sets of 4","1 set of 4 + 1 run of 4","1 set of 3 + 1 run of 5","2 runs of 4","3 sets of 3","1 set of 3 + 1 run of 6","2 sets of 3 + 1 run of 4","1 set of 3 + 1 run of 7","1 set of 5 + 1 run of 5","2 runs of 5"];
-let S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0,challengeId:null};
-let H=JSON.parse(localStorage.getItem('mayi6')||'[]');
-let challenges=JSON.parse(localStorage.getItem('mayi6c')||'[]');
-function saveH(){localStorage.setItem('mayi6',JSON.stringify(H));}
-function saveC(){localStorage.setItem('mayi6c',JSON.stringify(challenges));}
+
+let S={players:[],scores:{},cur:1,date:'',active:false,fdIdx:0,challengeId:null,gameCode:null};
+let H=[];
+let challenges=[];
+let selD=0,selC=null;
+let isHost=false;
+let unsubGame=null;
+
+// Sync status
+function setSyncStatus(s){
+  const el=document.getElementById('sync-status');
+  el.className='sync-status '+s;
+  el.textContent=s==='online'?'Synced':s==='syncing'?'Syncing...':'Offline';
+}
+
+// Load all games and challenges from Firebase
+async function loadAll(){
+  setSyncStatus('syncing');
+  try{
+    const [gSnap,cSnap]=await Promise.all([get(ref(db,'games')),get(ref(db,'challenges'))]);
+    H=[];
+    if(gSnap.exists()){
+      const data=gSnap.val();
+      Object.values(data).forEach(g=>{H.push(g);});
+      H.sort((a,b)=>b.date.localeCompare(a.date));
+    }
+    challenges=[];
+    if(cSnap.exists()){
+      const data=cSnap.val();
+      Object.entries(data).forEach(([id,c])=>{challenges.push({...c,id});});
+    }
+    setSyncStatus('online');
+    renderChallengeOpts();
+  }catch(e){
+    setSyncStatus('offline');
+    console.error(e);
+  }
+}
+loadAll();
+
+function genCode(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let code='';
+  for(let i=0;i<6;i++)code+=chars[Math.floor(Math.random()*chars.length)];
+  return code;
+}
+
 const td=()=>new Date().toISOString().split('T')[0];
 document.getElementById('gdate').value=td();
-let selD=0,selC=null;
 
 function upd(n){
   document.getElementById('cd').textContent=n;
@@ -266,6 +349,7 @@ function upd(n){
   rdo();
 }
 upd(4);
+window.upd=upd;
 
 function names(){
   const n=parseInt(document.getElementById('pr').value),a=[];
@@ -283,66 +367,107 @@ function rdo(){
     cont.appendChild(b);
   });
 }
+window.rdo=rdo;
 
 function renderChallengeOpts(){
-  const cont=document.getElementById('co');cont.innerHTML='';
+  const cont=document.getElementById('co');if(!cont)return;cont.innerHTML='';
   const active=challenges.filter(c=>!c.closed);
-  if(active.length===0){
-    cont.innerHTML='<span class="no-challenge">No active challenges yet — create one below</span>';
-    return;
-  }
-  // None option
+  if(active.length===0){cont.innerHTML='<span class="no-challenge">No active challenges — create one below</span>';return;}
   const none=document.createElement('button');
-  none.className='copt'+(selC===null?' sel':'');
-  none.textContent='None';
+  none.className='copt'+(selC===null?' sel':'');none.textContent='None';
   none.onclick=()=>{selC=null;document.querySelectorAll('.copt').forEach(x=>x.classList.remove('sel'));none.classList.add('sel');};
   cont.appendChild(none);
   active.forEach(ch=>{
     const b=document.createElement('button');
-    b.className='copt'+(selC===ch.id?' sel':'');
-    b.textContent=ch.name;
+    b.className='copt'+(selC===ch.id?' sel':'');b.textContent=ch.name;
     b.onclick=()=>{selC=ch.id;document.querySelectorAll('.copt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');};
     cont.appendChild(b);
   });
 }
-renderChallengeOpts();
 
-function addChallenge(){
+window.addChallenge=async function(){
   const inp=document.getElementById('new-c-name');
-  const name=inp.value.trim();
-  if(!name)return;
-  const ch={id:Date.now(),name,created:td(),closed:false,games:[]};
-  challenges.push(ch);saveC();
-  selC=ch.id;
+  const name=inp.value.trim();if(!name)return;
+  setSyncStatus('syncing');
+  const chRef=push(ref(db,'challenges'));
+  const ch={name,created:td(),closed:false,games:[]};
+  await set(chRef,ch);
+  challenges.push({...ch,id:chRef.key});
+  selC=chRef.key;
   inp.value='';
+  setSyncStatus('online');
   renderChallengeOpts();
-  // re-select the new one
-  setTimeout(()=>{document.querySelectorAll('.copt').forEach(b=>{if(b.textContent===name){b.classList.add('sel');}});},50);
-}
+};
 
 function dlr(r){return S.players[(S.fdIdx+(r-1))%S.players.length];}
 
-function go(){
+window.go=async function(){
   const pl=names(),d=document.getElementById('gdate').value||td();
-  S={players:pl,scores:{},cur:1,date:d,active:true,fdIdx:selD,challengeId:selC};
+  const code=genCode();
+  S={players:pl,scores:{},cur:1,date:d,active:true,fdIdx:selD,challengeId:selC,gameCode:code};
   pl.forEach(p=>{S.scores[p]=Array(12).fill(null);});
+  isHost=true;
+  setSyncStatus('syncing');
+  await set(ref(db,'live/'+code),{...S,lastUpdated:Date.now()});
+  setSyncStatus('online');
+  subscribeToGame(code);
   sh('sg');gt('s');
+};
+
+window.joinGame=async function(){
+  const code=document.getElementById('join-code').value.trim().toUpperCase();
+  if(!code||code.length<4)return;
+  setSyncStatus('syncing');
+  try{
+    const snap=await get(ref(db,'live/'+code));
+    if(!snap.exists()){alert('Game not found. Check the code and try again.');setSyncStatus('online');return;}
+    S={...snap.val(),gameCode:code};
+    isHost=false;
+    subscribeToGame(code);
+    sh('sg');gt('s');
+    setSyncStatus('online');
+  }catch(e){setSyncStatus('offline');alert('Could not connect. Check your internet and try again.');}
+};
+
+function subscribeToGame(code){
+  if(unsubGame)unsubGame();
+  unsubGame=onValue(ref(db,'live/'+code),(snap)=>{
+    if(!snap.exists())return;
+    const data=snap.val();
+    S={...data,gameCode:code};
+    const gc=document.getElementById('gc');
+    if(gc&&document.getElementById('sg').classList.contains('active')){
+      const activeTab=document.getElementById('ns').classList.contains('active')?'s':
+                      document.getElementById('nh').classList.contains('active')?'h':'c';
+      if(activeTab==='s')rg();
+    }
+    setSyncStatus('online');
+  });
+}
+
+async function pushGameState(){
+  if(!S.gameCode)return;
+  setSyncStatus('syncing');
+  await set(ref(db,'live/'+S.gameCode),{...S,lastUpdated:Date.now()});
+  setSyncStatus('online');
 }
 
 function sh(s){
   document.querySelectorAll('.screen').forEach(e=>e.classList.remove('active'));
   document.getElementById(s).classList.add('active');
-  if(s==='shist')ri(document.getElementById('hc'));
+  if(s==='shist'){loadAll().then(()=>ri(document.getElementById('hc')));}
   if(s==='sg')rg();
 }
+window.sh=sh;
 
 function gt(t){
   ['s','h','c'].forEach(x=>document.getElementById('n'+x).classList.toggle('active',t===x));
   const gc=document.getElementById('gc');
-  if(t==='h'){gc.innerHTML='';ri(gc);}
-  else if(t==='c'){gc.innerHTML='';renderChallengesInto(gc);}
+  if(t==='h'){gc.innerHTML='';loadAll().then(()=>ri(gc));}
+  else if(t==='c'){gc.innerHTML='';loadAll().then(()=>renderChallengesInto(gc));}
   else rg();
 }
+window.gt=gt;
 
 function tots(){const t={};S.players.forEach(p=>{t[p]=S.scores[p].reduce((s,v)=>s+(v||0),0);});return t;}
 function lead(){const t=tots();return S.players.reduce((a,b)=>t[a]<=t[b]?a:b);}
@@ -356,10 +481,14 @@ function rg(){
   let h='';
   h+=`<div class="ghead"><h2>${fd(S.date)||'Current game'}</h2><span>${S.players.length} players</span></div>`;
 
-  // Challenge pill
+  // Game code bar
+  if(S.gameCode){
+    h+=`<div class="game-code-bar"><span class="gc-label">Game code</span><span class="gc-code">${S.gameCode}</span><span class="gc-hint">Share with other devices to follow live</span></div>`;
+  }
+
   if(S.challengeId){
     const ch=challenges.find(c=>c.id===S.challengeId);
-    if(ch)h+=`<div style="margin-bottom:8px"><span class="challenge-pill"><span class="gem">💎</span>${ch.name}</span></div>`;
+    if(ch)h+=`<div style="margin-bottom:8px"><span class="challenge-pill">💎 ${ch.name}</span></div>`;
   }
 
   if(over){
@@ -386,116 +515,106 @@ function rg(){
   S.players.forEach(p=>{const w=over&&p===ldr;h+=`<td class="${w?'lc':''}">${T[p]}${w?' 🏆':''}</td>`;});
   h+=`</tr></tbody></table></div>`;
 
-  if(!over){
+  if(!over&&isHost){
     h+=`<div class="ecard"><h3>Enter deal ${S.cur} scores</h3><p class="sub">Penalty points remaining in each hand</p><div class="egrid">`;
     S.players.forEach(p=>{const k='e_'+p.replace(/\W/g,'_');h+=`<div class="ei"><label>${p}</label><input type="number" id="${k}" min="0" placeholder="0"></div>`;});
     h+=`</div><div class="brow"><button class="bclr" onclick="rg()">Clear</button><button class="bsave" onclick="sub()">Save deal ${S.cur}</button></div></div>`;
-  } else {
+  } else if(!over&&!isHost){
+    h+=`<div style="text-align:center;padding:1rem;color:var(--text-muted);font-size:13px">Viewing live — scores are entered on the host device</div>`;
+  }
+
+  if(over&&isHost){
     h+=`<button class="btn" onclick="sav()" style="margin-top:1rem">Save game to history</button>`;
   }
   gc.innerHTML=h;
 }
 
-function sub(){
+window.sub=async function(){
   const r=S.cur;
   S.players.forEach(p=>{const k='e_'+p.replace(/\W/g,'_');const el=document.getElementById(k);S.scores[p][r-1]=parseInt(el?el.value:'0')||0;});
-  S.cur++;rg();
-}
+  S.cur++;
+  await pushGameState();
+  rg();
+};
 
-function sav(){
+window.sav=async function(){
   const T=tots(),w=lead();
-  const rec={date:S.date,players:S.players.map(p=>({name:p,total:T[p]})),winner:w,firstDealer:S.players[S.fdIdx],challengeId:S.challengeId,scores:JSON.parse(JSON.stringify(S.scores))};
-  H.unshift(rec);saveH();
-  // Add to challenge
+  const rec={date:S.date,players:S.players.map(p=>({name:p,total:T[p]})),winner:w,firstDealer:S.players[S.fdIdx],challengeId:S.challengeId||null,scores:S.scores};
+  setSyncStatus('syncing');
+  const gameRef=push(ref(db,'games'));
+  await set(gameRef,rec);
   if(S.challengeId){
     const ch=challenges.find(c=>c.id===S.challengeId);
-    if(ch){ch.games.push({date:S.date,winner:w,players:S.players});saveC();}
+    if(ch){
+      const games=ch.games||[];
+      games.push({date:S.date,winner:w,players:S.players});
+      await update(ref(db,'challenges/'+S.challengeId),{games});
+    }
   }
-  S.active=false;sh('shist');
-}
+  setSyncStatus('online');
+  S.active=false;
+  await loadAll();
+  sh('shist');
+};
 
 function getChallengeLeaderboard(ch){
   const wc={};
-  ch.games.forEach(g=>{wc[g.winner]=(wc[g.winner]||0)+1;});
-  // get all players from first game
-  const players=ch.games.length>0?ch.games[0].players:[];
-  players.forEach(p=>{if(!wc[p])wc[p]=0;});
+  const games=ch.games||[];
+  games.forEach(g=>{wc[g.winner]=(wc[g.winner]||0)+1;});
+  if(games.length>0)games[0].players.forEach(p=>{if(!wc[p])wc[p]=0;});
   return Object.entries(wc).sort((a,b)=>b[1]-a[1]);
 }
 
 function renderChallengesInto(cont){
-  let h='';
   const active=challenges.filter(c=>!c.closed);
   const closed=challenges.filter(c=>c.closed);
+  let h='';
   if(challenges.length===0){h='<div class="empty">No challenges yet — create one when starting a game!</div>';}
   else{
-    if(active.length>0){
-      h+=`<div class="stitle">Active challenges</div>`;
-      active.forEach(ch=>{h+=renderChallenge(ch,true);});
-    }
-    if(closed.length>0){
-      h+=`<div class="stitle">Completed challenges</div>`;
-      closed.forEach(ch=>{h+=renderChallenge(ch,false);});
-    }
+    if(active.length>0){h+=`<div class="stitle">Active challenges</div>`;active.forEach(ch=>{h+=renderChallenge(ch,true);});}
+    if(closed.length>0){h+=`<div class="stitle">Completed challenges</div>`;closed.forEach(ch=>{h+=renderChallenge(ch,false);});}
   }
   cont.innerHTML=h;
 }
 
 function renderChallenge(ch,showClose){
   const lb=getChallengeLeaderboard(ch);
-  const topWinner=lb.length>0?lb[0][0]:null;
+  const top=lb.length>0?lb[0][0]:null;
+  const games=ch.games||[];
   let h=`<div class="challenge-card">
     <div class="challenge-card-header">
       <span class="challenge-name">💎 ${ch.name}</span>
       <span class="challenge-status ${ch.closed?'closed':''}">${ch.closed?'Completed':'Active'}</span>
     </div>
-    <div class="challenge-dates">Started ${fd(ch.created)}${ch.closed?' · Ended '+fd(ch.closedDate):''} · ${ch.games.length} game${ch.games.length===1?'':'s'}</div>`;
+    <div class="challenge-dates">Started ${fd(ch.created)}${ch.closed?' · Ended '+fd(ch.closedDate):''} · ${games.length} game${games.length===1?'':'s'}</div>`;
   if(lb.length>0){
     h+=`<table class="c-leaderboard"><thead><tr><th>Player</th><th>Wins</th></tr></thead><tbody>`;
-    lb.forEach(([name,wins])=>{
-      const isTop=name===topWinner&&!ch.closed;
-      h+=`<tr class="${isTop?'c-leader':''}"><td>${name}</td><td>${wins}</td></tr>`;
-    });
+    lb.forEach(([name,wins])=>{h+=`<tr class="${name===top&&!ch.closed?'c-leader':''}"><td>${name}</td><td>${wins}</td></tr>`;});
     h+=`</tbody></table>`;
-  } else {
-    h+=`<p style="font-size:13px;color:var(--text-muted);margin-top:8px">No games played yet</p>`;
-  }
-  if(showClose&&ch.games.length>0){
-    h+=`<button class="btn-close-challenge" onclick="closeChallenge(${ch.id})">Close challenge</button>`;
-  }
-  h+=`</div>`;
-  return h;
+  } else {h+=`<p style="font-size:13px;color:var(--text-muted);margin-top:8px">No games played yet</p>`;}
+  if(showClose&&games.length>0)h+=`<button class="btn-close-challenge" onclick="closeChallenge('${ch.id}')">Close challenge</button>`;
+  h+=`</div>`;return h;
 }
 
-function closeChallenge(id){
-  const ch=challenges.find(c=>c.id===id);
-  if(ch){ch.closed=true;ch.closedDate=td();saveC();}
-  const gc=document.getElementById('gc');
-  if(gc)renderChallengesInto(gc);
-  const hc=document.getElementById('hc');
-  if(hc)ri(hc);
-}
+window.closeChallenge=async function(id){
+  await update(ref(db,'challenges/'+id),{closed:true,closedDate:td()});
+  await loadAll();
+  const gc=document.getElementById('gc');if(gc)renderChallengesInto(gc);
+  const hc=document.getElementById('hc');if(hc)ri(hc);
+};
 
 function ri(cont){
   const wc={};H.forEach(g=>{wc[g.winner]=(wc[g.winner]||0)+1;});
   const sk=Object.entries(wc).sort((a,b)=>b[1]-a[1]);
   const md=['🥇','🥈','🥉'];
   let h='';
-
-  // Challenges summary
-  const activeCh=challenges.filter(c=>!c.closed);
-  const closedCh=challenges.filter(c=>c.closed);
-  if(challenges.length>0){
-    h+=`<div class="stitle">Challenges</div>`;
-    [...activeCh,...closedCh].forEach(ch=>{h+=renderChallenge(ch,!ch.closed);});
-  }
-
+  const allCh=[...challenges.filter(c=>!c.closed),...challenges.filter(c=>c.closed)];
+  if(allCh.length>0){h+=`<div class="stitle">Challenges</div>`;allCh.forEach(ch=>{h+=renderChallenge(ch,!ch.closed);});}
   if(sk.length>0){
     h+=`<div class="stitle">Hall of fame — all games</div><div class="hofg">`;
     sk.forEach(([n,w],i)=>{h+=`<div class="hofc"><div class="rnk">${md[i]||'#'+(i+1)}</div><div class="nm">${n}</div><div class="wn">${w}</div><div class="lb">${w===1?'win':'wins'}</div></div>`;});
     h+=`</div>`;
   }
-
   if(H.length===0){h+=`<div class="empty">No games yet — play your first game!</div>`;}
   else{
     h+=`<div class="stitle">Past games</div>`;
